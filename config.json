@@ -1,0 +1,70 @@
+{
+	"conf": [
+		{
+			"team": "JMobile",
+			"employees": [
+				{
+					"name": "Decin A",
+					"filename": "decin.csv"
+				},
+				{
+					"name": "Amal G",
+					"filename": "amal.csv"
+				},
+				{
+					"name": "Abdul Nizar",
+					"filename": "nizar.csv"
+				}
+			]
+		},
+		{
+			"team": "Corvina",
+			"employees": [
+				{
+					"name": "Prathibha D",
+					"filename": "prathibha.csv"
+				},
+				{
+					"name": "Sanjeev V",
+					"filename": "sanjeev.csv"
+				}
+			]
+		},
+		{
+			"team": "JM4Web",
+			"employees": [
+				{
+					"name": "Aju P H",
+					"filename": "aju.csv"
+				}
+			]
+		},
+		{
+			"team": "DevOps",
+			"employees": [
+				{
+					"name": "Basil B",
+					"filename": "basil.csv"
+				}
+			]
+		},
+		{
+			"team": "JMobile / IT Tasks",
+			"employees": [
+				{
+					"name": "Navaneeth S",
+					"filename": "navaneeth.csv"
+				}
+			]
+		},
+		{
+			"team": "JMobile / Office Tasks",
+			"employees": [
+				{
+					"name": "Sunil S",
+					"filename": "sunil.csv"
+				}
+			]
+		}
+	]
+}
