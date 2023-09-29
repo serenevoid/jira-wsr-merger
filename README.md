@@ -1,4 +1,4 @@
-# JIRA WSR Merger Tool
+# JIRA WSR Merge Tool
 WSR Merge Tool is a cli tool created to verify and merge timesheets exported as
 CSV files.
 
