@@ -45,19 +45,19 @@ func homeScreen() {
 		clearScreen()
 		fmt.Println("Verifying Files")
 		checkIfFilesExist()
+		fmt.Println("Press any key to go back...")
 		fmt.Scan()
 		clearInputBuffer()
+		homeScreen()
 		break;
 	case 3:
-		fmt.Println("Verifying and Generating Data")
-		fmt.Scan()
-		clearInputBuffer()
+		clearScreen()
+		fmt.Println("Merging Data")
+		mergedData := executeMerge()
+		writeData(mergedData)
 		break;
 	case 4:
-		fmt.Println("Bye")
-		fmt.Println("Press any key to quit...")
-		fmt.Scan()
-		clearScreen()
+		fmt.Println("Quitting...")
 		break;
 	default:
 		fmt.Println("Invalid choice")

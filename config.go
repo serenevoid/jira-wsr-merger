@@ -12,12 +12,12 @@ type Employee struct {
 }
 
 type Team struct {
-	TeamName string `json:"team"`
+	TeamName string `json:"teamname"`
 	EmployeesList []Employee `json:"employees"`
 }
 
 type ConfigFile struct {
-	Conf []Team `json:"conf"`
+	Teams []Team `json:"teams"`
 }
 
 var configData ConfigFile
@@ -32,7 +32,7 @@ func loadConfig() {
 
 func showConfig() {
 	fmt.Println("--------------------------------------")
-	for _, team := range configData.Conf {
+	for _, team := range configData.Teams {
 		fmt.Println("Team: ", team.TeamName)
 		fmt.Println("Employees: ")
 		for _, employee := range team.EmployeesList {
