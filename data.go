@@ -5,6 +5,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -61,6 +62,11 @@ func addMonthDetails(days int, day int) {
 	data = append(data, day_list)
 }
 
+func roundFloat(val float64, precision uint) float64 {
+	ratio := math.Pow(10, float64(precision))
+	return math.Round(val*ratio) / ratio
+}
+
 func sanitizeCell(csvData [][]string) {
 	for r := range csvData {
 		// Remove end cell
@@ -90,7 +96,7 @@ func sanitizeCell(csvData [][]string) {
 						}
 					}
 				}
-				csvData[r][c] = fmt.Sprint(hours)
+				csvData[r][c] = fmt.Sprint(roundFloat(hours, 2))
 			}
 		}
 	}
@@ -146,7 +152,6 @@ func addEmployeeData(employees []Employee) {
 func executeMerge() [][]string {
 	days, day := getMonthDetails()
 	addMonthDetails(days, day)
-	data = append(data, []string{""})
 	data = append(data, []string{""})
 	for _, team := range configData.Teams {
 		data = append(data, []string{team.TeamName})

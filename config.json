@@ -1,70 +1,70 @@
 {
-	"teams": [
-		{
-			"teamname": "JMobile",
-			"employees": [
-				{
-					"name": "Decin A",
-					"filename": "decin.csv"
-				},
-				{
-					"name": "Amal G",
-					"filename": "amal.csv"
-				},
-				{
-					"name": "Abdul Nizar",
-					"filename": "nizar.csv"
-				}
-			]
-		},
-		{
-			"teamname": "Corvina",
-			"employees": [
-				{
-					"name": "Prathibha D",
-					"filename": "prathibha.csv"
-				},
-				{
-					"name": "Sanjeev V",
-					"filename": "sanjeev.csv"
-				}
-			]
-		},
-		{
-			"teamname": "JM4Web",
-			"employees": [
-				{
-					"name": "Aju P H",
-					"filename": "aju.csv"
-				}
-			]
-		},
-		{
-			"teamname": "DevOps",
-			"employees": [
-				{
-					"name": "Basil B",
-					"filename": "basil.csv"
-				}
-			]
-		},
-		{
-			"teamname": "JMobile / IT Tasks",
-			"employees": [
-				{
-					"name": "Navaneeth S",
-					"filename": "navaneeth.csv"
-				}
-			]
-		},
-		{
-			"teamname": "JMobile / Office Tasks",
-			"employees": [
-				{
-					"name": "Sunil S",
-					"filename": "sunil.csv"
-				}
-			]
-		}
-	]
+  "teams": [
+    {
+      "teamname": "JMobile",
+      "employees": [
+        {
+          "name": "Decin A",
+          "filename": "decin.csv"
+        },
+        {
+          "name": "Amal G",
+          "filename": "amal.csv"
+        },
+        {
+          "name": "Abdul Nizar",
+          "filename": "nizar.csv"
+        }
+      ]
+    },
+    {
+      "teamname": "Corvina",
+      "employees": [
+        {
+          "name": "Prathibha D",
+          "filename": "prathibha.csv"
+        },
+        {
+          "name": "Sanjeev V",
+          "filename": "sanjeev.csv"
+        }
+      ]
+    },
+    {
+      "teamname": "JM4Web",
+      "employees": [
+        {
+          "name": "Aju P H",
+          "filename": "aju.csv"
+        }
+      ]
+    },
+    {
+      "teamname": "DevOps",
+      "employees": [
+        {
+          "name": "Basil B",
+          "filename": "basil.csv"
+        }
+      ]
+    },
+    {
+      "teamname": "JMobile / IT Tasks",
+      "employees": [
+        {
+          "name": "Navaneeth S",
+          "filename": "navaneeth.csv"
+        }
+      ]
+    },
+    {
+      "teamname": "JMobile / Office Tasks",
+      "employees": [
+        {
+          "name": "Sunil S",
+          "filename": "sunil.csv"
+        }
+      ]
+    }
+  ]
 }
