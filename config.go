@@ -8,7 +8,7 @@ import (
 
 type Employee struct {
 	Name string `json:"name"`
-	FileName string
+	FileName string `json:"filename"`
 }
 
 type Team struct {
