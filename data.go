@@ -128,6 +128,21 @@ func readFile(employeeFile string) [][]string {
 	return csvData
 }
 
+func cleanLeaves() {
+  for _, row := range(data) {
+    if row[0] == "PROJ-41" {
+      for i := range row {
+        if i == 0 {
+          continue
+        }
+        if row[i] != "0" {
+          row[i] = "0"
+        }
+      }
+    }
+  }
+}
+
 func addEmployeeData(employees []Employee) {
 	for _, employee := range(employees) {
 		data = append(data, []string{employee.Name})

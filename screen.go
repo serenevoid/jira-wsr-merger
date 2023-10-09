@@ -32,7 +32,7 @@ func homeScreen() {
 	fmt.Print("Enter choice: ")
 	fmt.Scan(&choice)
 	clearInputBuffer()
-	switch(choice) {
+	switch choice {
 	case 1:
 		clearScreen()
 		showConfig()
@@ -40,7 +40,7 @@ func homeScreen() {
 		fmt.Scan()
 		clearInputBuffer()
 		homeScreen()
-		break;
+		break
 	case 2:
 		clearScreen()
 		fmt.Println("Verifying Files")
@@ -49,21 +49,22 @@ func homeScreen() {
 		fmt.Scan()
 		clearInputBuffer()
 		homeScreen()
-		break;
+		break
 	case 3:
 		clearScreen()
 		fmt.Println("Merging Data")
 		mergedData := executeMerge()
+		cleanLeaves()
 		writeData(mergedData)
-		break;
+		break
 	case 4:
 		fmt.Println("Quitting...")
-		break;
+		break
 	default:
 		fmt.Println("Invalid choice")
 		fmt.Println("Press any key...")
 		fmt.Scan()
 		homeScreen()
-		break;
+		break
 	}
 }
