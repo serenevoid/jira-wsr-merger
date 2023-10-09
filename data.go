@@ -91,7 +91,7 @@ func cleanLeaves() {
           continue
         }
         if row[i] != "0" {
-          row[i] = "0"
+          row[i] = "L : " + row[i]
         }
       }
     }
