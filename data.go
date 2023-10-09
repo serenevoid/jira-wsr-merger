@@ -17,51 +17,6 @@ var (
 	cellColumns = []string{"B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AA","AB","AC","AD","AE","AF","AG"}
 )
 
-
-func getMonthDetails() (int, int) {
-	days := -1
-	firstDay := -1
-	for {
-		fmt.Print("Enter number of days in the month(28-31):")
-		fmt.Scan(&days)
-		if days > 27 && days < 32 {
-			break
-		}
-		fmt.Println("Invalid number of days")
-	}
-	for {
-		fmt.Print("Enter first of day of the month(1-7):")
-		fmt.Scan(&firstDay)
-		if firstDay > 0 && firstDay < 8 {
-			break
-		}
-		fmt.Println("Invalid day index")
-	}
-	return days, firstDay
-}
-
-func addMonthDetails(days int, day int) {
-	var date_list []string
-	var day_list []string
-	for i := 0; i < days + 1; i++ {
-		if i == 0 {
-			date_list = append(date_list, "")
-		} else {
-			date_list = append(date_list, fmt.Sprint(i))
-		}
-	}
-	data = append(data, date_list)
-	for i := 0; i < days + 1; i++ {
-		if i == 0 {
-			day_list = append(day_list, "")
-		} else {
-			day_index := (day + i - 2) % 7
-			day_list = append(day_list, dayNames[day_index])
-		}
-	}
-	data = append(data, day_list)
-}
-
 func roundFloat(val float64, precision uint) float64 {
 	ratio := math.Pow(10, float64(precision))
 	return math.Round(val*ratio) / ratio
@@ -71,6 +26,9 @@ func sanitizeCell(csvData [][]string) {
 	for r := range csvData {
 		// Remove end cell
 		csvData[r] = csvData[r][:len(csvData[r]) - 1]
+    if r == 0 {
+      continue
+    }
 		// Trim Issue ID
 		csvData[r][0] = strings.Split(csvData[r][0], " ")[0]
 		for c := range csvData[r] {
@@ -118,9 +76,6 @@ func readFile(employeeFile string) [][]string {
 	if err != nil {
 		log.Panic(err)
 	}
-	if csvData[0][0] == "Issue" {
-		csvData = csvData[1:]
-	}
 	if csvData[len(csvData) - 1][0] == "_  " {
 		csvData = csvData[:len(csvData) - 1]
 	}
@@ -165,8 +120,6 @@ func addEmployeeData(employees []Employee) {
 }
 
 func executeMerge() [][]string {
-	days, day := getMonthDetails()
-	addMonthDetails(days, day)
 	data = append(data, []string{""})
 	for _, team := range configData.Teams {
 		data = append(data, []string{team.TeamName})
