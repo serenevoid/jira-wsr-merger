@@ -7,17 +7,18 @@ import (
 )
 
 type Employee struct {
-	Name string `json:"name"`
+	Name     string `json:"name"`
 	FileName string `json:"filename"`
 }
 
 type Team struct {
-	TeamName string `json:"teamname"`
+	TeamName      string     `json:"teamname"`
 	EmployeesList []Employee `json:"employees"`
 }
 
 type ConfigFile struct {
-	Teams []Team `json:"teams"`
+	Teams    []Team `json:"teams"`
+	Holidays []int  `json:"holidays"`
 }
 
 var configData ConfigFile
@@ -40,4 +41,7 @@ func showConfig() {
 		}
 		fmt.Println("--------------------------------------")
 	}
+  fmt.Println()
+  fmt.Println("Listed Holidays for the month:", configData.Holidays)
+  fmt.Println()
 }
