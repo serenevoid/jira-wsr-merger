@@ -87,12 +87,22 @@ func cleanLeaves() {
   for _, row := range(data) {
     if row[0] == "PROJ-41" {
       for i := range row {
-        if i == 0 {
-          continue
+        switch row[i] {
+        case "8":
+          row[i] = "Full-day Leave"
+          break
+        case "4":
+          row[i] = "Half-day Leave"
+          break
+        case "0":
+          break
+        default:
+          row[i] = "[" + row[i] + "]"
+          break
         }
-        if row[i] != "0" {
-          row[i] = "L : " + row[i]
-        }
+      }
+      for _, day := range(configData.Holidays) {
+        row[day] = "Holiday"
       }
     }
   }
