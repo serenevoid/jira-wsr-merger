@@ -84,8 +84,10 @@ func readFile(employeeFile string) [][]string {
 }
 
 func cleanLeaves() {
-  for _, row := range(data) {
+  leaveRow := 0
+  for index, row := range(data) {
     if row[0] == "PROJ-41" {
+      leaveRow = index
       for i := range row {
         switch row[i] {
         case "8":
@@ -97,13 +99,22 @@ func cleanLeaves() {
         case "0":
           break
         default:
-          row[i] = "[" + row[i] + "]"
+          if i != 0 {
+            // If there is any other value, wrap it in
+            // square brackets for better visibility
+            row[i] = "[" + row[i] + "]"
+          }
           break
         }
       }
       for _, day := range(configData.Holidays) {
         row[day] = "Holiday"
       }
+    }
+    if row[0] == "Total" {
+      leaveRowData := data[leaveRow]
+      data[leaveRow] = data[index - 1]
+      data[index - 1] = leaveRowData
     }
   }
 }
