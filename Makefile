@@ -4,8 +4,8 @@ all: build
 
 build:
 	go build -o ${BINARY_NAME} .
-	mv ${BINARY_NAME} .\WSR_Generator\
-	7z a .\WSR_Generator\
+	mv ${BINARY_NAME} .\WSR_Generator
+	7z a .\WSR_Generator -oWSR_Generator
 
 clean:
 	go clean
