@@ -111,10 +111,11 @@ func cleanLeaves() {
         row[day] = "Holiday"
       }
     }
-    if row[0] == "Total" {
+    if row[0] == "Total" && leaveRow != 0 {
       leaveRowData := data[leaveRow]
       data[leaveRow] = data[index - 1]
       data[index - 1] = leaveRowData
+      leaveRow = 0;
     }
   }
 }
