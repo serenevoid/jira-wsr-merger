@@ -17,8 +17,9 @@ type Team struct {
 }
 
 type ConfigFile struct {
-  Teams    []Team `json:"teams"`
-  Holidays []int  `json:"holidays"`
+  Teams       []Team `json:"teams"`
+  Holidays    []int  `json:"holidays"`
+  LeaveTicket string `json:"leaveTicket"`
 }
 
 var configData ConfigFile

@@ -86,7 +86,7 @@ func readFile(employeeFile string) [][]string {
 func cleanLeaves() {
   leaveRow := 0
   for index, row := range(data) {
-    if row[0] == "PROJ-41" {
+    if row[0] == configData.LeaveTicket {
       leaveRow = index
       for i := range row {
         switch row[i] {
