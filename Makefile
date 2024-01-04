@@ -5,6 +5,7 @@ all: build
 build:
 	go build -o ${BINARY_NAME} .
 	mv ${BINARY_NAME} .\WSR_Generator
+	cp .\config.json .\WSR_Generator
 	7z a WSR_Generator .\WSR_Generator\*
 
 clean:
