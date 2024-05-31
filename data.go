@@ -38,6 +38,13 @@ func sanitizeCell(csvData [][]string) {
         duration := strings.Split(cell, " ")
         for _, part := range(duration) {
           if part != "" {
+            if strings.HasSuffix(part, "d") {
+              hour, err := strconv.Atoi(strings.TrimSuffix(part, "d"))
+              if err != nil {
+                log.Fatal(err)
+              }
+              hours += float64(hour) * 8
+            }
             if strings.HasSuffix(part, "h") {
               hour, err := strconv.Atoi(strings.TrimSuffix(part, "h"))
               if err != nil {
