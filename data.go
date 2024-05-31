@@ -83,7 +83,7 @@ func readFile(employeeFile string) [][]string {
   if err != nil {
     log.Panic(err)
   }
-  if csvData[len(csvData) - 1][0] == "_  " {
+  if csvData[len(csvData) - 1][0] == "" {
     csvData = csvData[:len(csvData) - 1]
   }
   sanitizeCell(csvData)
