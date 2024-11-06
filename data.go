@@ -131,10 +131,11 @@ func addEmployeeData(employees []Employee) {
   for _, employee := range(employees) {
     data = append(data, []string{employee.Name})
     data = append(data, []string{""})
-    start_pos := len(data) + 1
+    start_pos := len(data) + 2
     csvData := readFile(employee.FileName)
-    data = append (data, csvData...)
-    end_pos := len(data)
+    data = append(data, csvData...)
+    data = data[:len(data) - 1]
+    end_pos := len(data) - 1
     formula_row := []string{"Total"}
     for i := 0; i < len(csvData[0]); i++ {
       if i != len(csvData[0]) - 1 {
