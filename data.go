@@ -23,6 +23,15 @@ func roundFloat(val float64, precision uint) float64 {
 }
 
 func sanitizeCell(csvData [][]string) {
+  i := 0;
+  for i < len(csvData) {
+    // Check if ticket is not used
+    fmt.Println("value: " + csvData[i][len(csvData[i]) - 1])
+    if csvData[i][len(csvData[i]) - 1] == "" {
+      csvData = append(csvData[:i], csvData[i+1:]...)
+    }
+    i++
+  }
   for r := range csvData {
     // Remove end cell
     csvData[r] = csvData[r][:len(csvData[r]) - 1]
