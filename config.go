@@ -20,6 +20,8 @@ type ConfigFile struct {
   Teams       []Team `json:"teams"`
   Holidays    []int  `json:"holidays"`
   LeaveTicket string `json:"leaveTicket"`
+  Month string `json:"month"`
+  Branch string `json:"branch"`
 }
 
 var configData ConfigFile

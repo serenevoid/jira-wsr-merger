@@ -40,7 +40,7 @@ func checkIfFilesExist() {
 }
 
 func writeData(data [][]string) {
-  file, err := os.Create("./WSR.csv")
+  file, err := os.Create("./WSR_"+configData.Branch+"_"+configData.Month+".csv")
   if err != nil {
     log.Panic(err)
   }
