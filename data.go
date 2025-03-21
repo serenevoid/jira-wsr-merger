@@ -137,7 +137,6 @@ func addEmployeeData(employees []Employee) {
     start_pos := len(data) + 2
     csvData := readFile(employee.FileName)
     data = append(data, csvData...)
-    data = data[:len(data) - 1]
     end_pos := len(data)
     formula_row := []string{"Total"}
     for i := 0; i < len(csvData[0]); i++ {
