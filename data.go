@@ -71,6 +71,7 @@ func sanitizeCell(csvData [][]string) [][]string {
       }
     }
   }
+  return csvData
 }
 
 func readFile(employeeFile string) [][]string {
@@ -88,8 +89,8 @@ func readFile(employeeFile string) [][]string {
   if err != nil {
     log.Panic(err)
   }
-  csvData = csvData[:len(csvData) - 1]
-  sanitizeCell(csvData)
+  csvData = csvData[:len(csvData) - 1] // Remove Total row
+  csvData = sanitizeCell(csvData)
   return csvData
 }
 
