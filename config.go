@@ -33,16 +33,16 @@ func loadConfig() {
 }
 
 func showConfig() {
-  fmt.Println("--------------------------------------")
+  content := "--------------------------------------"
   for _, team := range configData.Teams {
-    fmt.Println("Team: ", team.TeamName)
-    fmt.Println("Employees: ")
+    content += "\nTeam: " + team.TeamName + "\n"
+    content += "Employees: \n"
     for _, employee := range team.EmployeesList {
-      fmt.Println("  -", employee.Name, "(file:", employee.FileName, ")")
+      content += "  -" + employee.Name + "(file:" + employee.FileName + ")\n"
     }
-    fmt.Println("--------------------------------------")
+    content += "--------------------------------------"
   }
-  fmt.Println()
-  fmt.Println("Listed Holidays for the month:", configData.Holidays)
-  fmt.Println()
+  fmt.Println(content)
+  fmt.Println("\nListed Holidays for the month:", configData.Holidays)
+  fmt.Println("Leave Ticket ID:", configData.LeaveTicket , "\n")
 }

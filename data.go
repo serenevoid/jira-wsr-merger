@@ -19,27 +19,24 @@ var (
 
 func roundFloat(val float64, precision uint) float64 {
   ratio := math.Pow(10, float64(precision))
-  return math.Round(val*ratio) / ratio
+  return math.Round(val * ratio) / ratio
 }
 
-func sanitizeCell(csvData [][]string) {
+func sanitizeCell(csvData [][]string) [][]string {
   i := 0;
   for i < len(csvData) {
-    // Check if ticket is not used
-    fmt.Println("value: " + csvData[i][len(csvData[i]) - 1])
+    // Check for unused tickets
     if csvData[i][len(csvData[i]) - 1] == "" {
       csvData = append(csvData[:i], csvData[i+1:]...)
     }
     i++
   }
   for r := range csvData {
-    // Remove end cell
+    // Remove last cell (Time Spent)
     csvData[r] = csvData[r][:len(csvData[r]) - 1]
     if r == 0 {
       continue
     }
-    // Trim Issue ID
-    csvData[r][0] = strings.Split(csvData[r][0], " ")[0]
     for c := range csvData[r] {
       if c != 0 {
         hours := 0.0
@@ -85,16 +82,13 @@ func readFile(employeeFile string) [][]string {
     fmt.Printf("Data in %s seems to be incomplete.\n", "./data/" + employeeFile)
     return [][]string{{""}}
   }
-  // Remove BOM
-  data = bytes.TrimPrefix(data, []byte("\xEF\xBB\xBF"))
+  data = bytes.TrimPrefix(data, []byte("\xEF\xBB\xBF")) // Remove BOM
   csvReader := csv.NewReader(bytes.NewReader(data))
   csvData, err := csvReader.ReadAll()
   if err != nil {
     log.Panic(err)
   }
-  if csvData[len(csvData) - 1][0] == "" {
-    csvData = csvData[:len(csvData) - 1]
-  }
+  csvData = csvData[:len(csvData) - 1]
   sanitizeCell(csvData)
   return csvData
 }
