@@ -22,49 +22,46 @@ func clearScreen() {
 
 func homeScreen() {
   clearScreen()
-  fmt.Println("JIRA WSR Merge Tool")
-  fmt.Println("===================")
-  fmt.Println("1. View config")
-  fmt.Println("2. Verify files")
-  fmt.Println("3. Generate WSR")
-  fmt.Println("4. Quit")
-  fmt.Println("-------------------")
-  fmt.Print("Enter choice: ")
+  content := "JIRA WSR Merge Tool\n"
+  content += "===================\n"
+  content += "1. Generate WSR\n"
+  content += "2. Verify files\n"
+  content += "3. View config\n"
+  content += "4. Quit\n"
+  content += "-------------------\n"
+  content += "Enter choice: "
+  fmt.Print(content)
   fmt.Scan(&choice)
   clearInputBuffer()
+  isQuitting := false
   switch choice {
   case 1:
-    clearScreen()
-    showConfig()
-    fmt.Println("Press any key to go back...")
-    fmt.Scan()
-    clearInputBuffer()
-    homeScreen()
-    break
-  case 2:
-    clearScreen()
-    fmt.Println("Verifying Files")
-    checkIfFilesExist()
-    fmt.Println("Press any key to go back...")
-    fmt.Scan()
-    clearInputBuffer()
-    homeScreen()
-    break
-  case 3:
-    clearScreen()
     fmt.Println("Merging Data")
     mergedData := executeMerge()
     cleanLeaves()
     writeData(mergedData)
+    isQuitting = true
+    break
+  case 2:
+    checkIfFilesExist()
+    break
+  case 3:
+    clearScreen()
+    showConfig()
     break
   case 4:
     fmt.Println("Quitting...")
+    isQuitting = true
     break
   default:
-    fmt.Println("Invalid choice")
-    fmt.Println("Press any key...")
+    fmt.Println("Invalid choice\nPress any key...")
     fmt.Scan()
-    homeScreen()
     break
+  }
+  if !isQuitting {
+    fmt.Println("Press any key to go back...")
+    fmt.Scan()
+    clearInputBuffer()
+    homeScreen()
   }
 }

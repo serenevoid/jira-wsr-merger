@@ -26,6 +26,7 @@ func fileIsNotValid(filename string) bool {
 }
 
 func checkIfFilesExist() {
+  fmt.Println("Verifying Files")
   file_list := getFileNames()
   allFilesValid := true
   for _, filename := range(file_list) {
