@@ -1,8 +1,8 @@
 {
-  "month": "December2024",
+  "month": "April2026",
   "branch": "Kochi",
-  "holidays": [1],
-  "leaveTicket": "PROJ-62",
+  "holidays": [20],
+  "leaveTicket": "PROJ-96",
   "teams": [
     {
       "teamname": "JMobile",
@@ -40,15 +40,6 @@
         {
           "name": "Aju P H",
           "filename": "aju.csv"
-        }
-      ]
-    },
-    {
-      "teamname": "DevOps",
-      "employees": [
-        {
-          "name": "Basil B",
-          "filename": "basil.csv"
         }
       ]
     },

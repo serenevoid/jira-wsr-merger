@@ -2,6 +2,9 @@ BINARY_NAME=WSR.exe
 
 all: build
 
+run:
+	go run .
+
 build:
 	go build -o ${BINARY_NAME} .
 	mv ${BINARY_NAME} .\WSR_Generator
