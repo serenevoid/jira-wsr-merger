@@ -23,17 +23,10 @@ func roundFloat(val float64, precision uint) float64 {
 }
 
 func sanitizeCell(csvData [][]string) [][]string {
-	i := 0
-	for i < len(csvData) {
-		// Check for unused tickets
-		if csvData[i][len(csvData[i])-1] == "" {
-			csvData = append(csvData[:i], csvData[i+1:]...)
-		}
-		i++
-	}
 	timeSpentColumn := -1
 	for r := range csvData {
 		if r == 0 {
+			i := 0
 			for i = range csvData[r] {
 				if strings.HasPrefix(csvData[r][i], "Time") {
 					timeSpentColumn = i
@@ -43,7 +36,11 @@ func sanitizeCell(csvData [][]string) [][]string {
 			}
 			continue
 		}
-		// Remove last cell (Time Spent)
+		// Check for unused tickets
+		if csvData[r][timeSpentColumn] == "" {
+			csvData = append(csvData[:r], csvData[r+1:]...)
+			continue
+		}
 		if timeSpentColumn != -1 {
 			csvData[r] = append(csvData[r][:timeSpentColumn], csvData[r][timeSpentColumn+1:]...)
 		}
@@ -113,19 +110,15 @@ func cleanLeaves() {
 				switch row[i] {
 				case "8":
 					row[i] = "Full-day Leave"
-					break
 				case "4":
 					row[i] = "Half-day Leave"
-					break
 				case "0":
-					break
 				default:
 					if i != 0 {
 						// If there is any other value, wrap it in
 						// square brackets for better visibility
 						row[i] = "[" + row[i] + "]"
 					}
-					break
 				}
 			}
 			for _, day := range configData.Holidays {
